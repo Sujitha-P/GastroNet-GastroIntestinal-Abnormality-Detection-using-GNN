@@ -1,0 +1,66 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1f2937; /* Dark background */
+    color: white;
+    background-image: url('https://png.pngtree.com/thumb_back/fh260/background/20220813/pngtree-human-digestive-system-process-medicine-body-photo-image_28116876.jpg'); /* Replace with your background image URL */
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+}
+
+/* Container */
+.container {
+    max-width: 600px;
+    margin: 100px auto; /* Adding margin to prevent overlap with fixed nav */
+    background-color: rgba(31, 41, 55, 0.7); /* Dark, semi-transparent container */
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+h1 {
+    text-align: center;
+    color: #4CAF50; /* Accent color */
+    margin-bottom: 20px;
+}
+
+input[type="file"] {
+    display: block;
+    margin: 20px 0;
+    width: 100%;
+    padding: 10px;
+    background-color: #374151;
+    border: 1px solid #4CAF50;
+    color: white;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.result {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 18px;
+    color: white;
+}

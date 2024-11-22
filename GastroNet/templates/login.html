@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GastroNet: Login Page</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* Reset browser styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body, html {
+      height: 100%;
+      font-family: 'Poppins', sans-serif;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    .btn {
+      border-radius: 50px;
+      font-size: 16px;
+      font-weight: 500;
+      padding: 10px 30px;
+      text-transform: uppercase;
+      background: linear-gradient(to right, #4CAF50, #81C784);
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: 100%;
+    }
+
+    .btn:hover {
+      background: linear-gradient(to right, #388E3C, #66BB6A);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .form-container {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: url('https://png.pngtree.com/thumb_back/fw800/background/20240909/pngtree-a-laptop-screen-with-holographic-human-stomach-anatomy-modern-hospital-background-image_16141672.jpg') no-repeat center center;
+      background-size: cover;
+      background-attachment: fixed;
+    }
+
+    #userform {
+      width: 450px;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(15px); /* Blurred background */
+      background: rgba(0, 0, 0, 0.5); /* Transparent background */
+    }
+
+    #userform .nav-tabs {
+      border: none;
+      margin-bottom: 20px;
+    }
+
+    #userform .nav-tabs li {
+      display: inline-block;
+    }
+
+    #userform .nav-tabs li a {
+      text-transform: uppercase;
+      font-size: 18px;
+      color: #4CAF50;
+      background-color: transparent;
+      padding: 10px 20px;
+      border-radius: 4px 4px 0 0;
+      display: inline-block;
+    }
+
+    #userform .nav-tabs li a:hover, 
+    #userform .nav-tabs li.active a {
+      background-color: #4CAF50;
+      color: #fff;
+    }
+
+    .tab-content {
+      padding: 20px;
+      background-color: rgba(0, 0, 0, 0.8);
+      border-radius: 0 0 12px 12px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 10px 15px;
+      background-color: rgba(237, 235, 250, 0.1);
+      color: #fff;
+      border: 1px solid #4CAF50;
+      border-radius: 30px;
+      transition: all .3s;
+    }
+
+    .form-group label {
+      color: rgba(255, 255, 255, 0.6);
+      position: absolute;
+      top: 12px;
+      left: 18px;
+      transition: all 0.25s ease;
+      font-size: 14px;
+    }
+
+    .form-group input:focus {
+      border-color: #4CAF50;
+      outline: none;
+    }
+
+    .form-group input:focus + label,
+    .form-group input:not(:placeholder-shown) + label {
+      top: -10px;
+      font-size: 12px;
+      color: #4CAF50;
+    }
+
+    .tab-pane {
+      display: none;
+    }
+
+    .tab-pane.active {
+      display: block;
+    }
+
+    .btn-container {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+
+    .btn-container .btn {
+      width: 48%;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-container">
+    <div id="userform">
+      <ul class="nav nav-tabs nav-justified">
+        <li class="active"><a href="#login" data-toggle="tab">Login</a></li>
+        <li><a href="#signup" data-toggle="tab">Sign Up</a></li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane active" id="login">
+          <div class="form-group">
+            <input type="email" id="loginEmail" required placeholder=" ">
+            <label for="loginEmail">Email Address</label>
+          </div>
+          <div class="form-group">
+            <input type="password" id="loginPassword" required placeholder=" ">
+            <label for="loginPassword">Password</label>
+          </div>
+          <div class="btn-container">
+            <button class="btn" onclick="handleLogin()">Login</button>
+          </div>
+        </div>
+        <div class="tab-pane" id="signup">
+          <div class="form-group">
+            <input type="text" id="signupName" required placeholder=" ">
+            <label for="signupName">Full Name</label>
+          </div>
+          <div class="form-group">
+            <input type="email" id="signupEmail" required placeholder=" ">
+            <label for="signupEmail">Email Address</label>
+          </div>
+          <div class="form-group">
+            <input type="password" id="signupPassword" required placeholder=" ">
+            <label for="signupPassword">Password</label>
+          </div>
+          <div class="btn-container">
+            <button class="btn" onclick="handleSignUp()">Sign Up</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+   // Handle Login
+function handleLogin() {
+  var email = document.getElementById('loginEmail').value;
+  var password = document.getElementById('loginPassword').value;
+
+  // Validate email and password
+  if (!email.includes('@')) {
+    alert('Please enter a valid email address');
+    return;
+  }
+
+  if (password.length < 6) {
+    alert('Password should be at least 6 characters');
+    return;
+  }
+
+  if (email && password) {
+    alert('Logged in successfully');
+    // Redirect to the index page
+    window.location.href = "/index";
+  } else {
+    alert('Please fill in both fields');
+  }
+}
+
+
+    // Handle Sign Up
+    function handleSignUp() {
+      var name = document.getElementById('signupName').value;
+      var email = document.getElementById('signupEmail').value;
+      var password = document.getElementById('signupPassword').value;
+
+      // Validate email and password
+      if (!email.includes('@')) {
+        alert('Please enter a valid email address');
+        return;
+      }
+
+      if (password.length < 6) {
+        alert('Password should be at least 6 characters');
+        return;
+      }
+
+      if (name && email && password) {
+        alert('Account created successfully');
+      } else {
+        alert('Please fill in all fields');
+      }
+    }
+
+    // Tab switching
+    document.querySelectorAll('.nav-tabs li a').forEach(tab => {
+      tab.addEventListener('click', function(e) {
+        e.preventDefault();
+
+        // Activate tab
+        document.querySelectorAll('.nav-tabs li').forEach(item => {
+          item.classList.remove('active');
+        });
+        this.parentElement.classList.add('active');
+
+        // Show corresponding tab content
+        const target = document.querySelector(this.getAttribute('href'));
+        document.querySelectorAll('.tab-pane').forEach(pane => {
+          pane.classList.remove('active');
+        });
+        target.classList.add('active');
+      });
+    });
+  </script>
+
+</body>
+</html>
